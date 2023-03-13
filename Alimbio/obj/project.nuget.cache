@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Wxiv5Gvzeqmyftak1AP1+0UGbmjy6xkRj/Dg1XnEBl4RISoeJdhhId/O1twJ0JWS70FwZmvg5mQ9/8hca75M/w==",
+  "dgSpecHash": "q5AT+3NMrV3AsSVwSPUeTgPcQWrIAGI/vsz2PSX4UTeOqrqtwu+dEyhWWw05aMMwhWHVGK697wSUGgr9QQarvw==",
   "success": true,
   "projectFilePath": "C:\\Users\\imouy\\Desktop\\Projet-individuel\\Alimbio\\Alimbio.csproj",
   "expectedPackageFiles": [
@@ -51,6 +51,8 @@
     "C:\\Users\\imouy\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\imouy\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\imouy\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\imouy\\.nuget\\packages\\mysqlconnector\\2.2.5\\mysqlconnector.2.2.5.nupkg.sha512",
+    "C:\\Users\\imouy\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\7.0.0\\pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
     "C:\\Users\\imouy\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\imouy\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\imouy\\.nuget\\packages\\system.configuration.configurationmanager\\5.0.0\\system.configuration.configurationmanager.5.0.0.nupkg.sha512",
