@@ -1,0 +1,21 @@
+﻿namespace Alimbio.Models
+{
+    public class Salarie
+    {
+        public int Id { get; set; }
+        public string? Nom { get; set; }
+        public string? Prenom { get; set; }
+        public string? Email { set; get; }
+        public string? Mobile { get; set; }
+        public string? Fax { get; set; }
+        public string? Adresse { set; get; }
+        public string? CodePostal { get; set; }
+        public string? Ville { get; set; }
+        public string? Pays { get; set; }
+
+        public int? ServiceId { get; set; }
+        public Service? Service { get; set; }
+        public int? SiteId { get; set; }
+        public Site? Site { get; set; }
+    }
+}
