@@ -48,7 +48,7 @@ namespace Alimbio.Controllers
         // GET: Sites/Create
         public IActionResult Create()
         {
-            ViewData["VilleId"] = new SelectList(_context.Villes, "Id", "Id");
+            ViewData["VilleId"] = new SelectList(_context.Villes, "Id", "NomVille");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace Alimbio.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["VilleId"] = new SelectList(_context.Villes, "Id", "Id", site.VilleId);
+            ViewData["VilleId"] = new SelectList(_context.Villes, "Id", "NomVille", site.VilleId);
             return View(site);
         }
 
@@ -82,7 +82,7 @@ namespace Alimbio.Controllers
             {
                 return NotFound();
             }
-            ViewData["VilleId"] = new SelectList(_context.Villes, "Id", "Id", site.VilleId);
+            ViewData["VilleId"] = new SelectList(_context.Villes, "Id", "NomVille", site.VilleId);
             return View(site);
         }
 
@@ -118,7 +118,7 @@ namespace Alimbio.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["VilleId"] = new SelectList(_context.Villes, "Id", "Id", site.VilleId);
+            ViewData["VilleId"] = new SelectList(_context.Villes, "Id", "NomVille", site.VilleId);
             return View(site);
         }
 
