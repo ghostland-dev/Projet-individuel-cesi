@@ -19,7 +19,7 @@
         public string? Email { get; set; }
         public string? SiteWeb { get; set; }
 
-        public int? EntreprieId { get; set; }
+        public int? EntrepriseId { get; set; }
         public Entreprise? Entreprise { get; set; }
         public int? VilleId { get; set; }
         public Ville? Ville { get; set; }
