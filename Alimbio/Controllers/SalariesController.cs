@@ -49,8 +49,8 @@ namespace Alimbio.Controllers
         // GET: Salaries/Create
         public IActionResult Create()
         {
-            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "Id");
-            ViewData["SiteId"] = new SelectList(_context.Sites, "Id", "Id");
+            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "NomService");
+            ViewData["SiteId"] = new SelectList(_context.Sites, "Id", "NomSite");
             return View();
         }
 
