@@ -22,7 +22,7 @@ namespace Alimbio.Controllers
         // GET: Sites
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Sites.Include(s => s.Ville);
+            var applicationDbContext = _context.Sites.Include(s => s.Entreprise).Include(s => s.Ville);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,6 +35,7 @@ namespace Alimbio.Controllers
             }
 
             var site = await _context.Sites
+                .Include(s => s.Entreprise)
                 .Include(s => s.Ville)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (site == null)
@@ -48,6 +49,7 @@ namespace Alimbio.Controllers
         // GET: Sites/Create
         public IActionResult Create()
         {
+            ViewData["EntrepriseId"] = new SelectList(_context.Entreprises, "Id", "NomEntreprise");
             ViewData["VilleId"] = new SelectList(_context.Villes, "Id", "NomVille");
             return View();
         }
@@ -57,7 +59,7 @@ namespace Alimbio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Siret,NomSite,Description,TypeSite,Statut,NombreEmployees,Capital,Adresse,Langitude,Largitude,Effectif,DateCreation,Tel,Email,SiteWeb,EntreprieId,VilleId")] Site site)
+        public async Task<IActionResult> Create([Bind("Id,Siret,NomSite,Description,TypeSite,Statut,NombreEmployees,Capital,Adresse,Langitude,Largitude,Effectif,DateCreation,Tel,Email,SiteWeb,EntrepriseId,VilleId")] Site site)
         {
             if (ModelState.IsValid)
             {
@@ -65,6 +67,7 @@ namespace Alimbio.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["EntrepriseId"] = new SelectList(_context.Entreprises, "Id", "NomEntreprise", site.EntrepriseId);
             ViewData["VilleId"] = new SelectList(_context.Villes, "Id", "NomVille", site.VilleId);
             return View(site);
         }
@@ -82,6 +85,7 @@ namespace Alimbio.Controllers
             {
                 return NotFound();
             }
+            ViewData["EntrepriseId"] = new SelectList(_context.Entreprises, "Id", "NomEntreprise", site.EntrepriseId);
             ViewData["VilleId"] = new SelectList(_context.Villes, "Id", "NomVille", site.VilleId);
             return View(site);
         }
@@ -91,7 +95,7 @@ namespace Alimbio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Siret,NomSite,Description,TypeSite,Statut,NombreEmployees,Capital,Adresse,Langitude,Largitude,Effectif,DateCreation,Tel,Email,SiteWeb,EntreprieId,VilleId")] Site site)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Siret,NomSite,Description,TypeSite,Statut,NombreEmployees,Capital,Adresse,Langitude,Largitude,Effectif,DateCreation,Tel,Email,SiteWeb,EntrepriseId,VilleId")] Site site)
         {
             if (id != site.Id)
             {
@@ -118,6 +122,7 @@ namespace Alimbio.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["EntrepriseId"] = new SelectList(_context.Entreprises, "Id", "NomEntreprise", site.EntrepriseId);
             ViewData["VilleId"] = new SelectList(_context.Villes, "Id", "NomVille", site.VilleId);
             return View(site);
         }
@@ -131,6 +136,7 @@ namespace Alimbio.Controllers
             }
 
             var site = await _context.Sites
+                .Include(s => s.Entreprise)
                 .Include(s => s.Ville)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (site == null)

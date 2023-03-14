@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Alimbio.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230314002917_Second-Migration")]
-    partial class SecondMigration
+    [Migration("20230314004757_Third-Migration")]
+    partial class ThirdMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -216,9 +216,6 @@ namespace Alimbio.Migrations
 
                     b.Property<string>("Email")
                         .HasColumnType("longtext");
-
-                    b.Property<int?>("EntreprieId")
-                        .HasColumnType("int");
 
                     b.Property<int?>("EntrepriseId")
                         .HasColumnType("int");

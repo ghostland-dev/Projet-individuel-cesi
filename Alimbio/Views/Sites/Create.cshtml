@@ -89,8 +89,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="EntrepriseId" class="control-label"></label>
-                <input asp-for="EntrepriseId" class="form-control" />
-                <span asp-validation-for="EntrepriseId" class="text-danger"></span>
+                <select asp-for="EntrepriseId" class ="form-control" asp-items="ViewBag.EntrepriseId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="VilleId" class="control-label"></label>

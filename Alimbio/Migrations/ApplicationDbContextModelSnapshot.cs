@@ -214,9 +214,6 @@ namespace Alimbio.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("EntreprieId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("EntrepriseId")
                         .HasColumnType("int");
 
