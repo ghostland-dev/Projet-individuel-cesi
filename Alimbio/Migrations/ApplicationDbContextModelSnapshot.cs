@@ -19,6 +19,263 @@ namespace Alimbio.Migrations
                 .HasAnnotation("ProductVersion", "7.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("Alimbio.Models.Entreprise", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("AdresseComplet")
+                        .HasColumnType("longtext");
+
+                    b.Property<float?>("Capital")
+                        .HasColumnType("float");
+
+                    b.Property<string>("CodePostal")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ComplementAdresse")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateOnly>("DateCreation")
+                        .HasColumnType("date");
+
+                    b.Property<string>("DescriptionActivite")
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("Effectif")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("EntrepriseEmployeuse")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("ImmatriculationTva")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("InscritRcs")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Langitude")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Lattitude")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("LibelleVoie")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Nic")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("NomEntreprise")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("NumeroVoie")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool?>("PersonneMoral")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Region")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Siren")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("SirenFormate")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("SiretFormatSiege")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("SiretSiege")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("SiteWeb")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Ville")
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("VilleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("denommenation")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VilleId");
+
+                    b.ToTable("Entreprises");
+                });
+
+            modelBuilder.Entity("Alimbio.Models.Salarie", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Adresse")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("CodePostal")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("EntrepriseId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Fax")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Mobile")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Nom")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Pays")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Prenom")
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SiteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Ville")
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("VilleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EntrepriseId");
+
+                    b.HasIndex("ServiceId");
+
+                    b.HasIndex("SiteId");
+
+                    b.HasIndex("VilleId");
+
+                    b.ToTable("Salaries");
+                });
+
+            modelBuilder.Entity("Alimbio.Models.Service", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("EntrepriseId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NomService")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EntrepriseId");
+
+                    b.ToTable("Services");
+                });
+
+            modelBuilder.Entity("Alimbio.Models.Site", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Adresse")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Capital")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DateCreation")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Effectif")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("EntreprieId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EntrepriseId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Langitude")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Largitude")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("NomSite")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("NombreEmployees")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Siret")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("SiteWeb")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Statut")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Tel")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("TypeSite")
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("VilleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EntrepriseId");
+
+                    b.HasIndex("VilleId");
+
+                    b.ToTable("Sites");
+                });
+
+            modelBuilder.Entity("Alimbio.Models.Ville", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("CodePostal")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("NomVille")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Villes");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -215,6 +472,58 @@ namespace Alimbio.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Alimbio.Models.Entreprise", b =>
+                {
+                    b.HasOne("Alimbio.Models.Ville", null)
+                        .WithMany("Entreprises")
+                        .HasForeignKey("VilleId");
+                });
+
+            modelBuilder.Entity("Alimbio.Models.Salarie", b =>
+                {
+                    b.HasOne("Alimbio.Models.Entreprise", null)
+                        .WithMany("Salaries")
+                        .HasForeignKey("EntrepriseId");
+
+                    b.HasOne("Alimbio.Models.Service", "Service")
+                        .WithMany("Salaries")
+                        .HasForeignKey("ServiceId");
+
+                    b.HasOne("Alimbio.Models.Site", "Site")
+                        .WithMany()
+                        .HasForeignKey("SiteId");
+
+                    b.HasOne("Alimbio.Models.Ville", null)
+                        .WithMany("Salaries")
+                        .HasForeignKey("VilleId");
+
+                    b.Navigation("Service");
+
+                    b.Navigation("Site");
+                });
+
+            modelBuilder.Entity("Alimbio.Models.Service", b =>
+                {
+                    b.HasOne("Alimbio.Models.Entreprise", null)
+                        .WithMany("Services")
+                        .HasForeignKey("EntrepriseId");
+                });
+
+            modelBuilder.Entity("Alimbio.Models.Site", b =>
+                {
+                    b.HasOne("Alimbio.Models.Entreprise", "Entreprise")
+                        .WithMany("Sites")
+                        .HasForeignKey("EntrepriseId");
+
+                    b.HasOne("Alimbio.Models.Ville", "Ville")
+                        .WithMany("Sites")
+                        .HasForeignKey("VilleId");
+
+                    b.Navigation("Entreprise");
+
+                    b.Navigation("Ville");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -264,6 +573,29 @@ namespace Alimbio.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Alimbio.Models.Entreprise", b =>
+                {
+                    b.Navigation("Salaries");
+
+                    b.Navigation("Services");
+
+                    b.Navigation("Sites");
+                });
+
+            modelBuilder.Entity("Alimbio.Models.Service", b =>
+                {
+                    b.Navigation("Salaries");
+                });
+
+            modelBuilder.Entity("Alimbio.Models.Ville", b =>
+                {
+                    b.Navigation("Entreprises");
+
+                    b.Navigation("Salaries");
+
+                    b.Navigation("Sites");
                 });
 #pragma warning restore 612, 618
         }
