@@ -18,7 +18,9 @@ namespace Alimbio
                 options.UseMySql(ConnectionToMysqlStr, ServerVersion.AutoDetect(ConnectionToMysqlStr));
             });
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-           
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
+
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -41,6 +43,7 @@ namespace Alimbio
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllerRoute(
                 name: "default",
