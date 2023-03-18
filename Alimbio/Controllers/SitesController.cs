@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Alimbio.Data;
 using Alimbio.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Alimbio.Controllers
 {
@@ -48,7 +47,6 @@ namespace Alimbio.Controllers
         }
 
         // GET: Sites/Create
-        [Authorize]
         public IActionResult Create()
         {
             ViewData["EntrepriseId"] = new SelectList(_context.Entreprises, "Id", "NomEntreprise");
@@ -59,7 +57,6 @@ namespace Alimbio.Controllers
         // POST: Sites/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Siret,NomSite,Description,TypeSite,Statut,NombreEmployees,Capital,Adresse,Langitude,Largitude,Effectif,DateCreation,Tel,Email,SiteWeb,EntrepriseId,VilleId")] Site site)
@@ -76,7 +73,6 @@ namespace Alimbio.Controllers
         }
 
         // GET: Sites/Edit/5
-        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Sites == null)
@@ -97,7 +93,6 @@ namespace Alimbio.Controllers
         // POST: Sites/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Siret,NomSite,Description,TypeSite,Statut,NombreEmployees,Capital,Adresse,Langitude,Largitude,Effectif,DateCreation,Tel,Email,SiteWeb,EntrepriseId,VilleId")] Site site)
@@ -133,7 +128,6 @@ namespace Alimbio.Controllers
         }
 
         // GET: Sites/Delete/5
-        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Sites == null)
@@ -154,7 +148,6 @@ namespace Alimbio.Controllers
         }
 
         // POST: Sites/Delete/5
-        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

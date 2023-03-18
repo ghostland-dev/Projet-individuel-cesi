@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Alimbio.Data;
 using Alimbio.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Alimbio.Controllers
 {
@@ -47,7 +46,6 @@ namespace Alimbio.Controllers
         }
 
         // GET: Entreprises/Create
-        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -56,7 +54,6 @@ namespace Alimbio.Controllers
         // POST: Entreprises/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Siren,SirenFormate,NomEntreprise,DescriptionActivite,PersonneMoral,denommenation,SiretSiege,SiretFormatSiege,Nic,NumeroVoie,LibelleVoie,ComplementAdresse,AdresseComplet,CodePostal,Ville,Region,Lattitude,Langitude,DateCreation,EntrepriseEmployeuse,Capital,Effectif,InscritRcs,SiteWeb,ImmatriculationTva")] Entreprise entreprise)
@@ -71,7 +68,6 @@ namespace Alimbio.Controllers
         }
 
         // GET: Entreprises/Edit/5
-        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Entreprises == null)
@@ -90,7 +86,6 @@ namespace Alimbio.Controllers
         // POST: Entreprises/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Siren,SirenFormate,NomEntreprise,DescriptionActivite,PersonneMoral,denommenation,SiretSiege,SiretFormatSiege,Nic,NumeroVoie,LibelleVoie,ComplementAdresse,AdresseComplet,CodePostal,Ville,Region,Lattitude,Langitude,DateCreation,EntrepriseEmployeuse,Capital,Effectif,InscritRcs,SiteWeb,ImmatriculationTva")] Entreprise entreprise)
@@ -124,7 +119,6 @@ namespace Alimbio.Controllers
         }
 
         // GET: Entreprises/Delete/5
-        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Entreprises == null)
@@ -143,7 +137,6 @@ namespace Alimbio.Controllers
         }
 
         // POST: Entreprises/Delete/5
-        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
