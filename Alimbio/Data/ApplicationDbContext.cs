@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Alimbio.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+
+
 
 namespace Alimbio.Data
 {
@@ -10,15 +13,12 @@ namespace Alimbio.Data
         {
         }
 
-        public DbSet<Alimbio.Models.Entreprise> Entreprises { get; set; }
-        public DbSet<Alimbio.Models.Salarie> Salaries { get; set; }
-        public DbSet<Alimbio.Models.Site> Sites { get; set; }
-        public DbSet<Alimbio.Models.Service> Services { get; set; }
-        public DbSet<Alimbio.Models.Ville> Villes { get; set; }
+        public DbSet<Entreprise> Entreprises { get; set; }
+        public DbSet<Salarie> Salaries { get; set; }
+        public DbSet<Site> Sites { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<Ville> Villes { get; set; }
  
-
-
-
 
     }
 }
