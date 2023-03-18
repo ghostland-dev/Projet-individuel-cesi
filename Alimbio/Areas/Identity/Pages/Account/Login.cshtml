@@ -23,7 +23,7 @@
 
     <section id="contact" class="contact">
         <div class="container">
-            <div class="row  justify-content-center" data-aos="fade-up">
+            <div class="row card p-3 justify-content-center" data-aos="fade-up">
                 <div class="col-lg-4">
             <form id="account" method="post">
                 <h2 class="text-center"> Portail de connexion</h2>
@@ -46,17 +46,17 @@
                     </label>
                 </div>
                 <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-green" >Se connecter</button>
                 </div>
                 <div>
                     <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                        <a  class="text-success " id="forgot-password" asp-page="./ForgotPassword">Mot de passe oublié ?</a>
                     </p>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                        <a  class="text-success " asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl"> S'inscrire</a>
                     </p>
                     <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                        <a class="text-success "  id="resend-confirmation" asp-page="./ResendEmailConfirmation">Renvoyez le mail de confirmation </a>
                     </p>
                 </div>
             </form>

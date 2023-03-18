@@ -1,4 +1,7 @@
-﻿@model IEnumerable<Alimbio.Models.Salarie>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model IEnumerable<Alimbio.Models.Salarie>
 
 @{
     ViewData["Title"] = "Index";
@@ -11,10 +14,10 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h2>Team</h2>
+                <h2>Employées</h2>
                 <ol>
-                    <li><a href="index.html">Home</a></li>
-                    <li>Team</li>
+                    <li><a href="index.html">Employées</a></li>
+                    <li>listes des employées</li>
                 </ol>
             </div>
 
@@ -23,7 +26,10 @@
     <!-- ======= Our Team Section ======= -->
     <section id="team" class="team section-bg">
         <div class="container">
-
+            @if(SignInManager.IsSignedIn(User))
+                                    {
+            <a class="btn btn-green" asp-action="Create"> <i class="bi bi-plus"> nouveau salarié </i></a>
+                                    }
             <div class="section-title" data-aos="fade-up">
                 <h2>Notre<strong>Equipe</strong></h2>
                 <p>retrouvez la liste des nos salariés , ils sont tous à votre dispositions pour les moindre question !</p>
@@ -38,19 +44,28 @@
                     <div class="member" data-aos="fade-up">
                         <div class="member-img">
                                 <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                            <div class="social">
-                                  <a  asp-controller="Salaries" asp-action="details" asp-route-id="@item.Id"><i class="bi bi-eye"></i></a>
-                                    <a asp-controller="Salaries" asp-action="edit" asp-route-id="@item.Id"><i class="bi bi-pen"></i></a>
-                                    <a asp-controller="Salaries" asp-action="delate" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
+                            <div class="social btn-orange ">
+                                        <p class="mt-3"> Cliquez pour voir les détails ! </p>
                             </div>
                         </div>
                         <div class="member-info">
                                 <h4>@Html.DisplayFor(modelItem => item.Nom) @Html.DisplayFor(modelItem => item.Prenom)</h4>
-                                <span>@Html.DisplayFor(modelItem => item.Service.NomService)</span>
-                                <a href="tel:074515516511651" class="p-2 m-2 bg-warning w-30 rounded text-white px-2 text-center">Appeller</a>
-                           
+                                <span class="my-3">@Html.DisplayFor(modelItem => item.Service.NomService)</span>
+                                <div> 
+                                    <a class="btn btn-green" asp-controller="Salaries" asp-action="details" asp-route-id="@item.Id"><i class="bi bi-eye"></i></a>
+                                    <a href="tel:+33@Html.DisplayFor(modelItem => item.Mobile)" class="btn btn-green"><i class="bi bi-phone"></i></a>
+                                    <a href="mailto:@Html.DisplayFor(modelItem => item.Email)" class="btn btn-green"><i class="bi bi-chat"></i></a>
+                                </div>
+                                    @if (SignInManager.IsSignedIn(User))
+                                    {
+                                        <div class="my-3">
+                                            <a class="btn btn-orange"  asp-controller="Salaries" asp-action="edit" asp-route-id="@item.Id"><i class="bi bi-pen"></i></a>
+                                            <a class="btn btn-red"  asp-controller="Salaries" asp-action="delate" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
+                                        </div>
+                                    }
+
                         </div>
-                    </div>
+                    </div> 
                 </div>
                 </a>
                 }
@@ -65,8 +80,5 @@
 
 
  
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+ 
  

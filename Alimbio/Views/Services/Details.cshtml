@@ -1,4 +1,7 @@
-﻿@model Alimbio.Models.Service
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model Alimbio.Models.Service
 
 @{
     ViewData["Title"] = "Details";
@@ -37,8 +40,11 @@
                         </ul>
                         <ul>
                             <li>
-                                <a class="btn btn-primary" asp-action="Index"><i class="fas fa-arrow-left"></i></a>
-                                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model?.Id"><i class="fas fa-pen text-white"></i></a> 
+                                <a class="btn btn-green" asp-action="Index"><i class="fas fa-arrow-left"></i></a>
+                                 @if(SignInManager.IsSignedIn(User))
+                                {
+                                    <a class="btn btn-orange" asp-action="Edit" asp-route-id="@Model?.Id"><i class="fas fa-pen text-white"></i></a>
+                                }                            
                             </li>
                              
                         </ul>

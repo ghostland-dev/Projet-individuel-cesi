@@ -1,4 +1,7 @@
-﻿@model Alimbio.Models.Salarie
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model Alimbio.Models.Salarie
 
 @{
     ViewData["Title"] = "Details";
@@ -46,10 +49,13 @@
                         </ul>
                         <ul>
                             <li>
-                                <a class="btn btn-primary" asp-action="Index"><i class="fas fa-arrow-left"></i></a>
-                                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model?.Id"><i class="fas fa-pen text-white"></i></a>
-                                <a class="btn btn-danger" asp-action="delete" asp-route-id="@Model?.Id"><i class="fas fa-trash text-white"></i></a>
-
+                                <a class="btn btn-green" asp-action="Index"><i class="fas fa-arrow-left"></i></a>
+                                
+                                @if(SignInManager.IsSignedIn(User))
+                                    {
+                                <a class="btn btn-orange" asp-action="Edit" asp-route-id="@Model?.Id"><i class="fas fa-pen text-white"></i></a>
+                                <a class="btn btn-red" asp-action="delete" asp-route-id="@Model?.Id"><i class="fas fa-trash text-white"></i></a>
+                                    }
                             </li>
 
                         </ul>
@@ -63,13 +69,13 @@
                           
                             <li><strong>Nom de Site</strong>: @Html.DisplayFor(model => model.Site.NomSite) || <strong>SIREN</strong>: @Html.DisplayFor(model => model.Site.Siret)</li>
                             <strong>Description</strong>:
-                            <p class="card py-2 m-y2">  @Html.DisplayFor(model => model.Site.Description)</p>
+                            <p class="card  p-3">  @Html.DisplayFor(model => model.Site.Description)</p>
                             <li><strong>Capital</strong>:  @Html.DisplayFor(model => model.Site.Capital) €</li>
                             <li><strong>Effectif</strong>:  @Html.DisplayFor(model => model.Site.Effectif) employée</li>
                             <li><strong>Adresse E-mail</strong>:  @Html.DisplayFor(model => model.Site.Email)</li>
                             <li><strong>Tél</strong>:  @Html.DisplayFor(model => model.Site.Tel)</li>
                             <li><strong>Adresse</strong>:  @Html.DisplayFor(model => model.Site.Adresse)</li>
-                            <li><strong>Ville</strong>:  @Html.DisplayFor(model => model.Site.Ville.NomVille)</li>
+                            <li><strong>Ville</strong>:  @Html.DisplayFor(model => model.Site.Ville.CodePostal)</li>
                             <li><strong>Code Postal</strong>:  @Html.DisplayFor(model => model.Site.Ville.CodePostal)</li>
                             <li><strong>Site Internet </strong>:  @Html.DisplayFor(model => model.Site.SiteWeb)</li>
                             <li><strong>Type de site </strong>: <span class="badge badge-light-success text-success">  @Html.DisplayFor(model => model.Site.TypeSite)</span></li>
@@ -85,7 +91,8 @@
                         <h3>Information - Service </h3>
                         <ul>
                             <li><strong>Nom de service</strong>:  @Html.DisplayFor(model => model.Service.NomService)</li>
-                            <p><strong>Description</strong>:  @Html.DisplayFor(model => model.Service.Description)</p>
+                            <strong>Description</strong>:
+                            <p> @Html.DisplayFor(model => model.Service.Description)</p>
 
                         </ul>
                     </div>
@@ -102,7 +109,3 @@
 
 </main><!-- End #main -->
  
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>

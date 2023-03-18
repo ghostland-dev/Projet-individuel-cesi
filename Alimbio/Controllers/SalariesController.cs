@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Alimbio.Data;
 using Alimbio.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Net.Mail;
+using System.Net;
 
 namespace Alimbio.Controllers
 {
@@ -23,6 +26,7 @@ namespace Alimbio.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Salaries.Include(s => s.Service).Include(s => s.Site);
+            
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -47,6 +51,7 @@ namespace Alimbio.Controllers
         }
 
         // GET: Salaries/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "NomService");
@@ -57,6 +62,7 @@ namespace Alimbio.Controllers
         // POST: Salaries/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nom,Prenom,Email,Mobile,Fax,Adresse,CodePostal,Ville,Pays,ServiceId,SiteId")] Salarie salarie)
@@ -67,12 +73,13 @@ namespace Alimbio.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "Id", salarie.ServiceId);
-            ViewData["SiteId"] = new SelectList(_context.Sites, "Id", "Id", salarie.SiteId);
+            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "NomService", salarie.ServiceId);
+            ViewData["SiteId"] = new SelectList(_context.Sites, "Id", "NomSite", salarie.SiteId);
             return View(salarie);
         }
 
         // GET: Salaries/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Salaries == null)
@@ -85,14 +92,15 @@ namespace Alimbio.Controllers
             {
                 return NotFound();
             }
-            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "Id", salarie.ServiceId);
-            ViewData["SiteId"] = new SelectList(_context.Sites, "Id", "Id", salarie.SiteId);
+            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "NomService", salarie.ServiceId);
+            ViewData["SiteId"] = new SelectList(_context.Sites, "Id", "NomSite", salarie.SiteId);
             return View(salarie);
         }
 
         // POST: Salaries/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nom,Prenom,Email,Mobile,Fax,Adresse,CodePostal,Ville,Pays,ServiceId,SiteId")] Salarie salarie)
@@ -122,12 +130,13 @@ namespace Alimbio.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "Id", salarie.ServiceId);
-            ViewData["SiteId"] = new SelectList(_context.Sites, "Id", "Id", salarie.SiteId);
+            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "NomService", salarie.ServiceId);
+            ViewData["SiteId"] = new SelectList(_context.Sites, "Id", "NomSite", salarie.SiteId);
             return View(salarie);
         }
 
         // GET: Salaries/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Salaries == null)
@@ -147,7 +156,9 @@ namespace Alimbio.Controllers
             return View(salarie);
         }
 
+
         // POST: Salaries/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

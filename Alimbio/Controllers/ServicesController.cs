@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Alimbio.Data;
 using Alimbio.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Alimbio.Controllers
 {
@@ -46,6 +47,7 @@ namespace Alimbio.Controllers
         }
 
         // GET: Services/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +56,7 @@ namespace Alimbio.Controllers
         // POST: Services/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,NomService,Description")] Service service)
@@ -68,6 +71,7 @@ namespace Alimbio.Controllers
         }
 
         // GET: Services/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Services == null)
@@ -86,6 +90,7 @@ namespace Alimbio.Controllers
         // POST: Services/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,NomService,Description")] Service service)
@@ -119,6 +124,7 @@ namespace Alimbio.Controllers
         }
 
         // GET: Services/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Services == null)
@@ -137,6 +143,7 @@ namespace Alimbio.Controllers
         }
 
         // POST: Services/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

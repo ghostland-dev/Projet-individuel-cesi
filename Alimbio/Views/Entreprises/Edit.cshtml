@@ -1,4 +1,7 @@
-﻿@model Alimbio.Models.Entreprise
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model Alimbio.Models.Entreprise
 
 @{
     ViewData["Title"] = "Edit";
