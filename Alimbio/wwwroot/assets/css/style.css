@@ -2220,34 +2220,3 @@ section {
   color: #fff;
   text-decoration: none;
 }
-
-.btn-green {
-    background-color: #21df65 !important;
-    color:white !important;
-}
-
-.btn-red {
-    background-color: #f30834eb !important;
-    color: white !important;
-}
-
-.btn-orange {
-    background-color: #ffa707 !important;
-    color: white !important;
-}
-.btn-blue {
-    background-color: #6607ff !important;
-    color: white !important;
-}
-
-
-.btn-gray {
-    background-color: #21df65 !important;
-    color: white !important;
-}
-
-pan.badge.badge-light-success.text-success {
-    background-color: aliceblue !important;
-    padding: 1em !important;
-    color: #0fc14f !important;
-}
