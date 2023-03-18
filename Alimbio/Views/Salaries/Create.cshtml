@@ -4,95 +4,76 @@
     ViewData["Title"] = "Create";
 }
 
-<main id="main">
+<h1>Create</h1>
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-        <div class="container">
-
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>Salaries</h2>
-                <ol>
-                    <li><a href="#">Slaries</a></li>
-                    <li>Créer</li>
-                </ol>
+<h4>Salarie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label"></label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
             </div>
-
-        </div>
-    </section><!-- End Breadcrumbs -->
-  
-  
-    <div class="container mt-5 justify-content-center card p-3" data-aos="fade-up">
-        <div class="row">
-            <form asp-action="Create" class="php-email-form">
-                <div class="row">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="col-md-4  form-group">
-                    <label asp-for="Nom" class="control-label"></label>
-                    <input type="text" class="form-control" asp-for="Nom" class="form-control" />
-                    <span asp-validation-for="Nom" class="text-danger"></span>
-                </div>
-                <div class="col-md-4  form-group">
-                    <label asp-for="Prenom" class="control-label"></label>
-                    <input type="text" class="form-control" asp-for="Prenom" class="form-control" />
-                    <span asp-validation-for="Prenom" class="text-danger"></span>
-                </div>
-                <div class="col-md-4 form-group">
-                    <label asp-for="Email" class="control-label"></label>
-                    <input type="text" class="form-control" asp-for="Email" class="form-control" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
-                <div class="col-md-4 form-group">
-                    <label asp-for="Mobile" class="control-label"></label>
-                    <input type="text" class="form-control" asp-for="Mobile" class="form-control" />
-                    <span asp-validation-for="Mobile" class="text-danger"></span>
-                </div>
-                <div class="col-md-4 form-group">
-                    <label asp-for="Fax" class="control-label"></label>
-                    <input type="text" class="form-control" asp-for="Fax" class="form-control" />
-                    <span asp-validation-for="Fax" class="text-danger"></span>
-                </div>
-                <div class="col-md-4 form-group">
-                    <label asp-for="Adresse" class="control-label"></label>
-                    <input type="text" class="form-control"  asp-for="Adresse" class="form-control" />
-                    <span asp-validation-for="Adresse" class="text-danger"></span>
-                </div>
-                <div class="col-md-4 form-group">
-                    <label asp-for="CodePostal" class="control-label"></label>
-                    <input type="text" class="form-control" asp-for="CodePostal" class="form-control" />
-                    <span asp-validation-for="CodePostal" class="text-danger"></span>
-                </div>
-                <div class="col-md-4 form-group">
-                    <label asp-for="Ville" class="control-label"></label>
-                    <input type="text" class="form-control" asp-for="Ville" class="form-control" />
-                    <span asp-validation-for="Ville" class="text-danger"></span>
-                </div>
-                <div class="col-md-4 form-group">
-                    <label asp-for="Pays" class="control-label"></label>
-                    <input type="text" class="form-control" asp-for="Pays" class="form-control" />
-                    <span asp-validation-for="Pays" class="text-danger"></span>
-                </div>
-                <div class="col-md-6 form-group">
-                    <label asp-for="ServiceId" class="control-label"></label>
-                    <select class="form-control" asp-for="ServiceId" class="form-control" asp-items="ViewBag.ServiceId"></select>
-                </div>
-                <div class="col-md-6 form-group">
-                    <label asp-for="SiteId" class="control-label"></label>
-                    <select class="form-control"  asp-for="SiteId" class="form-control" asp-items="ViewBag.SiteId"></select>
-                </div>
-               
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-green my-3" />
-                </div>
-                </div>
-            </form>
-          </div>
+            <div class="form-group">
+                <label asp-for="Prenom" class="control-label"></label>
+                <input asp-for="Prenom" class="form-control" />
+                <span asp-validation-for="Prenom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile" class="control-label"></label>
+                <input asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fax" class="control-label"></label>
+                <input asp-for="Fax" class="form-control" />
+                <span asp-validation-for="Fax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Adresse" class="control-label"></label>
+                <input asp-for="Adresse" class="form-control" />
+                <span asp-validation-for="Adresse" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodePostal" class="control-label"></label>
+                <input asp-for="CodePostal" class="form-control" />
+                <span asp-validation-for="CodePostal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ville" class="control-label"></label>
+                <input asp-for="Ville" class="form-control" />
+                <span asp-validation-for="Ville" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pays" class="control-label"></label>
+                <input asp-for="Pays" class="form-control" />
+                <span asp-validation-for="Pays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServiceId" class="control-label"></label>
+                <select asp-for="ServiceId" class ="form-control" asp-items="ViewBag.ServiceId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiteId" class="control-label"></label>
+                <select asp-for="SiteId" class ="form-control" asp-items="ViewBag.SiteId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
-
-</main>
+</div>
 
 <div>
-    <a class="btn btn-orange m-3 ti ti-right-arrow" asp-action="Index">Précédent</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
