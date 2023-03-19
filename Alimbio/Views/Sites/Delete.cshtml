@@ -1,4 +1,7 @@
-﻿@model Alimbio.Models.Site
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model Alimbio.Models.Site
 
 @{
     ViewData["Title"] = "Delete";
